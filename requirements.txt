@@ -1,0 +1,13 @@
+at leaset 30 products for sale
+
+
+Admin:
+database Admin
+business manager/owner
+employee
+client
+
+
+Potential prog.lang:
+No python
+PhP required
