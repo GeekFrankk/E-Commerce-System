@@ -1,24 +1,198 @@
-<html>
-    <head bgcolor="#956aad">
-      <title>Violet Cosmetics Catalog Search</title>
-    </head>
-    
-    <body bgcolor="#956aad">
-      <h1>Violet Cosmetics Catalog Search</h1>
-    
-      <form action="results.php" method="post">
-        Choose Search Type:<br />
-        <select name="searchtype">
-          <option value="name">Name
-          <option value="id">id
-        </select>
-        <br />
-        Enter Search Term:<br />
-        <input name="searchterm" type="text" size="40">
-        <br />
-        <input type="submit" name="submit" value="Search">
-      </form>
-    
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violet Cosmetics Order Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #956aad;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        form {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        td, th {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+        
+        tr:first-child {
+            background-color: #7a559a;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        tr:not(:first-child) {
+            background-color: #ffffff;
+            color: #333333;
+        }
+        
+        img {
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
+        }
+        
+        p {
+            margin: 10px 0 5px;
+            font-weight: 600;
+        }
+        
+        input[type="text"] {
+            width: 60px;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+            margin-top: 5px;
+            background-color: #ffffff;
+            color: #333333;
+        }
+        
+        input[type="submit"] {
+            background-color: #7a559a;
+            color: #ffffff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #63457c;
+        }
+        
+        .form-group {
+            margin: 20px 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.9rem;
+            }
+            
+            td, th {
+                padding: 10px 5px;
+            }
+            
+            img {
+                height: 150px;
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="order_results.php" method="post">
+            <header>
+                <h1>Violet Cosmetics</h1>
+            </header>
+            
+            <table>
+                <tr>
+                    <td width="150"><b>Products</b></td>
+                    <td>
+                        <img src="./Images/Violet_Toner.jpg" height="200" width="200" alt="Violet Toner">
+                        <p>Violet Toner</p>
+                    </td>
+                    <td>
+                        <img src="./Images/Violet_Face_Cream.jpg" height="200" width="200" alt="Violet Face Cream">
+                        <p>Violet Face Cream</p>
+                    </td>
+                    <td>
+                        <img src="./Images/Violet_Sunscreen.jpg" height="200" width="200" alt="Violet Sunscreen">
+                        <p>Violet Sunscreen</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150"><b>Quantity</b></td>
+                    <td><input type="text" name="tonerqty" size="3" maxlength="3"></td>
+                    <td><input type="text" name="facecreamqty" size="3" maxlength="3"></td>
+                    <td><input type="text" name="sunscreenqty" size="3" maxlength="3"></td>
+                </tr>
+            </table>
+            
+            <div class="form-group">
+                <label for="find">How did you find Violet Cosmetics?</label>
+                <select name="find" id="find">
+                    <option value="a">I'm a regular customer</option>
+                    <option value="b">TV advertising</option>
+                    <option value="c">Phone directory</option>
+                    <option value="d">Word of mouth</option>
+                </select>
+            </div>
+            
+            <input type="submit" value="Submit Order">
+        </form>
+        
+        <a href="index.html" class="back-link">Back to Product Management</a>
+    </div>
+</body>
 </html>
-
