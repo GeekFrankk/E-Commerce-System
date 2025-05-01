@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <style>
+  
+    :root {
+        --primary: #956aad;
+        --primary-dark: #7a559a;
+        --primary-light: #b68ecc;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --dark-gray: #333333;
+        --accent: #ff9cee;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--white);
+        text-align: center;
+        margin-bottom: 15px;
+    }
+  
+    body {
+        background-color: var(--light-gray);
+        color: var(--dark-gray);
+        line-height: 1.6;
+    }
+    
+    header {
+        background-color: var(--primary);
+        padding: 15px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: auto;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #employee-role-container {
+      display: none;
+    }
+
+    button {
+      background-color: #956aad;
+      color: white;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #7a559a;
+    }
+  </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Violet Cosmetics</div>
+        </div>
+    </header>
+    
+  <form action="register.php" method="post">
+    <h2>Register</h2>
+
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" required>
+    
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="user_type">I am a:</label>
+    <select id="user_type" name="user_type" required>
+      <option value="">-- Select One --</option>
+      <option value="customer">Customer</option>
+      <option value="employee">Employee</option>
+    </select>
+
+    <div id="employee-role-container">
+      <label for="employee_role">Employee Role:</label>
+      <select id="employee_role" name="employee_role">
+        <option value="">-- Select Role --</option>
+        <option value="admin">Admin</option>
+        <option value="manager">Manager</option>
+        <option value="business_owner">Business Owner</option>
+      </select>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    const userTypeSelect = document.getElementById('user_type');
+    const roleContainer = document.getElementById('employee-role-container');
+
+    userTypeSelect.addEventListener('change', function () {
+      if (this.value === 'employee') {
+        roleContainer.style.display = 'block';
+      } else {
+        roleContainer.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+

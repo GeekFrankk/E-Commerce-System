@@ -1,3 +1,13 @@
+<?php
+@ $db = new mysqli("localhost", "deegann1_AllUser", "AllUserPassword", "deegann1_project");
+$sql = "SELECT orders.order_id, orders.order_date, orders.order_amount, orders.status, users.fname, users.lname
+        FROM orders
+        JOIN users ON orders.user_id = users.id
+        ORDER BY orders.order_date DESC";
+
+$result = $db->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,12 +146,43 @@
             <div class="logo">Violet Cosmetics</div>
             <nav>
                 <ul>
-                    <li><a href="admin_products.php">Products</a></li> <!--this needs to be a product view only on admin side-->
-                    <li><a href="insert.html">Insert</a></li>
+                    <li><a href="owner_main.html">Owner Home</a></li>
+                    <li><a href="all_orders.html">All Orders</a></li>
                 </ul>
             </nav>
         </div>
+        <main class="container">
+            <h1>All Orders</h1>
+        
+            <?php if ($result && $result->num_rows > 0): ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>User Email</th>
+                            <th>Order Date</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while($row = $result->fetch_assoc()): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($row['id']) ?></td>
+                                <td><?= htmlspecialchars($row['email']) ?></td>
+                                <td><?= htmlspecialchars($row['order_date']) ?></td>
+                                <td>$<?= number_format($row['total'], 2) ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No orders found.</p>
+            <?php endif; ?>
+        
+            <?php $db->close(); ?>
+        </main>
     </header>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 Violet Cosmetics. All rights reserved.</p>

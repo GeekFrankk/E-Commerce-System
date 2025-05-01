@@ -1,3 +1,14 @@
+<?php
+@ $db = new mysqli("localhost", "deegann1_AllUser", "AllUserPassword", "deegann1_project");
+
+$sql = "SELECT orders.order_id, orders.order_date, orders.order_amount, orders.status, users.fname, users.lname
+        FROM orders
+        JOIN users ON orders.user_id = users.id
+        ORDER BY orders.order_date ASC";
+
+$result = $db->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,12 +147,53 @@
             <div class="logo">Violet Cosmetics</div>
             <nav>
                 <ul>
-                    <li><a href="admin_products.php">Products</a></li> <!--this needs to be a product view only on admin side-->
-                    <li><a href="insert.html">Insert</a></li>
+                    <li><a href="owner_main.html">Owner Home</a></li>
+                    <li><a href="all_orders.php">Orders</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <main class="container">
+        <section class="card">
+            <h1>Order Management</h1>
+                    
+            <?php if ($result && $result->num_rows > 0): ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>User ID</th>
+                            <th>Order Date</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while($row = $result->fetch_assoc()): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($row['order_id']) ?></td>
+                                <td><?= htmlspecialchars($row['userId']) ?></td>
+                                <td><?= htmlspecialchars($row['order_date']) ?></td>
+                                <td>$<?= number_format($row['order_amount'], 2) ?></td>
+                                <td><?= htmlspecialchars($row['status']) ?></td>
+                                <td><?= htmlspecialchars($row['fname']) ?></td>
+                                <td><?= htmlspecialchars($row['lname']) ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No orders found.</p>
+            <?php endif; ?>
+        
+            <?php $db->close(); ?>
+
+        </section>
+    </main>
+       
     <footer>
         <div class="container">
             <p>&copy; 2025 Violet Cosmetics. All rights reserved.</p>

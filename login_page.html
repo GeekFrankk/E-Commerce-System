@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Violet Cosmetics</title>
+    <style>
+
+        :root {
+            --primary: #956aad;
+            --primary-dark: #7a559a;
+            --primary-light: #b68ecc;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+            --accent: #ff9cee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        main {
+            margin: 30px 0;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Violet Cosmetics</div>
+
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Login</h1>
+        <div class="contact-container">
+            <form action="login.php" method="POST">
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Your Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <br>
+            <p>Don't have an account? <a href="register_page.html">Register Here!</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Violet Cosmetics. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
